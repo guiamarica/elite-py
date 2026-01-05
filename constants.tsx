@@ -6,11 +6,11 @@ export const UI_TRANSLATIONS: Record<'es' | 'en' | 'pt', AppTranslations> = {
     title: 'ELITE PY',
     subtitle: 'La guía más sofisticada de Paraguay',
     categories: {
-      [Category.RESTAURANTS]: 'Bares y Restaurantes',
-      [Category.HOTELS]: 'Hoteles y Posadas',
-      [Category.TOURS]: 'Paseos',
-      [Category.NIGHTLIFE]: 'Diversión Nocturna',
-      [Category.EXCHANGE]: 'Cambios'
+      [Category.RESTAURANTS]: 'Gastronomía',
+      [Category.HOTELS]: 'Hoteles & Spa',
+      [Category.TOURS]: 'Cultura & Paseos',
+      [Category.NIGHTLIFE]: 'Vida Nocturna',
+      [Category.EXCHANGE]: 'Premium Exchange'
     },
     labels: {
       admin: 'Administración',
@@ -34,11 +34,11 @@ export const UI_TRANSLATIONS: Record<'es' | 'en' | 'pt', AppTranslations> = {
     title: 'ELITE PY',
     subtitle: 'The most sophisticated guide to Paraguay',
     categories: {
-      [Category.RESTAURANTS]: 'Bars & Restaurants',
-      [Category.HOTELS]: 'Hotels & Inns',
-      [Category.TOURS]: 'Tours',
+      [Category.RESTAURANTS]: 'Fine Dining',
+      [Category.HOTELS]: 'Hotels & Spa',
+      [Category.TOURS]: 'Culture & Tours',
       [Category.NIGHTLIFE]: 'Nightlife',
-      [Category.EXCHANGE]: 'Currency Exchange'
+      [Category.EXCHANGE]: 'VIP Exchange'
     },
     labels: {
       admin: 'Administration',
@@ -62,15 +62,15 @@ export const UI_TRANSLATIONS: Record<'es' | 'en' | 'pt', AppTranslations> = {
     title: 'ELITE PY',
     subtitle: 'O guia mais sofisticado do Paraguai',
     categories: {
-      [Category.RESTAURANTS]: 'Bares e Restaurantes',
-      [Category.HOTELS]: 'Hotéis e Pousadas',
-      [Category.TOURS]: 'Passeios',
-      [Category.NIGHTLIFE]: 'Diversão Noturna',
-      [Category.EXCHANGE]: 'Câmbios'
+      [Category.RESTAURANTS]: 'Gastronomia',
+      [Category.HOTELS]: 'Hotéis & Spa',
+      [Category.TOURS]: 'Cultura & Passeios',
+      [Category.NIGHTLIFE]: 'Vida Noturna',
+      [Category.EXCHANGE]: 'Premium Exchange'
     },
     labels: {
       admin: 'Administração',
-      details: 'Ver Detalhes',
+      details: 'Ver detalhes',
       more: 'mais',
       close: 'Fechar',
       addPlace: 'Adicionar Local',
@@ -89,287 +89,515 @@ export const UI_TRANSLATIONS: Record<'es' | 'en' | 'pt', AppTranslations> = {
 };
 
 export const INITIAL_PLACES: Place[] = [
-  // --- RESTAURANTS (4) ---
+  // --- RESTAURANTS (6) ---
   {
-    id: 'r1',
+    id: 'as1',
     category: Category.RESTAURANTS,
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 4,
     translations: {
-      es: { name: 'Sax Palace', description: 'Una joya arquitectónica con gastronomía internacional de vanguardia. Disfrute de una selección de vinos exclusivos y una vista panorámica privilegiada del río Paraná y el Puente de la Amistad, todo en un ambiente de lujo absoluto.', address: 'Avenida San Blas, CDE' },
-      en: { name: 'Sax Palace', description: 'An architectural gem with cutting-edge international gastronomy. Enjoy a selection of exclusive wines and a privileged panoramic view of the Paraná River and the Friendship Bridge, all in an atmosphere of absolute luxury.', address: 'San Blas Avenue, CDE' },
-      pt: { name: 'Sax Palace', description: 'Uma joia arquitetônica com gastronomia internacional de vanguarda. Desfrute de uma seleção de vinhos exclusivos e uma vista panorâmica privilegiada do rio Paraná e da Ponte da Amizade, tudo em um ambiente de luxo absoluto.', address: 'Avenida San Blas, CDE' }
+      es: { name: 'Mburicaó', description: 'El máximo referente de la alta gastronomía en Asunción. Un ambiente exclusivo donde la cocina de autor se fusiona con la elegancia de un piano bar.', address: 'Av. Prof. Alirio Silva c/ Av. Choferes del Chaco, Asunción' },
+      en: { name: 'Mburicao', description: 'The peak of fine dining in Asunción. An exclusive setting where signature cuisine meets piano bar elegance.', address: 'Av. Prof. Alirio Silva & Choferes del Chaco, Asunción' },
+      pt: { name: 'Mburicaó', description: 'A maior referência em alta gastronomia de Assunção. Um ambiente exclusivo onde a cozinha autoral se funde com a elegância de um piano bar.', address: 'Av. Prof. Alirio Silva c/ Av. Choferes del Chaco, Assunção' }
     },
-    contact: '+595 61 500 000',
+    contact: '+595 21 660 048',
+    whatsapp: '595981100200',
+    mapUrl: 'https://maps.google.com/?q=Mburicao+Restaurante+Asuncion'
+  },
+  {
+    id: 'cde1',
+    category: Category.RESTAURANTS,
+    rating: 4.9,
+    images: [
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1550966841-3ee20005740b?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Sax Palace CDE', description: 'Ubicado en el último piso de Sax Department Store, ofrece una experiencia de lujo total con vista al Puente de la Amistad.', address: 'Avenida San Blas, Ciudad del Este' },
+      en: { name: 'Sax Palace CDE', description: 'Located on the top floor of Sax Department Store, offering total luxury with views of the Friendship Bridge.', address: 'San Blas Avenue, Ciudad del Este' },
+      pt: { name: 'Sax Palace CDE', description: 'Localizado no último andar da Sax Department Store, oferece uma experiência de luxo total com vista para a Ponte da Amizade.', address: 'Avenida San Blas, Ciudad del Este' }
+    },
     whatsapp: '595983123456',
     mapUrl: 'https://maps.google.com/?q=Sax+Palace+Ciudad+del+Este'
   },
   {
-    id: 'r2',
+    id: 'as-r2',
     category: Category.RESTAURANTS,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 3,
-    translations: {
-      es: { name: 'Monalisa Gourmet', description: 'Ubicado en el corazón de la icónica tienda Monalisa, este restaurante ofrece una experiencia culinaria refinada con ingredientes importados de la más alta calidad y una de las cavas de vino más importantes de América Latina.', address: 'Monseñor Rodriguez esq. Carlos Antonio Lopez' },
-      en: { name: 'Monalisa Gourmet', description: 'Located in the heart of the iconic Monalisa store, this restaurant offers a refined culinary experience with high-quality imported ingredients and one of the most important wine cellars in Latin America.', address: 'Monseñor Rodriguez corner Carlos Antonio Lopez' },
-      pt: { name: 'Monalisa Gourmet', description: 'Localizado no coração da icônica loja Monalisa, este restaurante oferece uma experiência culinária refinada com ingredientes importados da mais alta qualidade e uma das adegas de vinho mais importantes da América Latina.', address: 'Monseñor Rodriguez esq. Carlos Antonio Lopez' }
-    },
-    email: 'gourmet@monalisa.com.py',
-    mapUrl: 'https://maps.google.com/?q=Monalisa+Ciudad+del+Este'
-  },
-  {
-    id: 'r3',
-    category: Category.RESTAURANTS,
-    rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 3,
-    translations: {
-      es: { name: 'TGI Fridays Jesuitas', description: 'Situado en la pintoresca Plaza Jesuitas, ofrece un ambiente sofisticado pero relajado, perfecto para cenas post-compras. Su menú americano premium y cócteles de autor lo convierten en un punto de encuentro obligado.', address: 'Plaza Jesuitas, Km 8 Monday' },
-      en: { name: 'TGI Fridays Jesuitas', description: 'Located in the picturesque Plaza Jesuitas, it offers a sophisticated yet relaxed atmosphere, perfect for post-shopping dinners. Its premium American menu and signature cocktails make it a must-visit meeting point.', address: 'Plaza Jesuitas, Km 8 Monday' },
-      pt: { name: 'TGI Fridays Jesuitas', description: 'Situado na pitoresca Plaza Jesuitas, oferece um ambiente sofisticado mas relaxado, perfeito para jantares pós-compras. Seu menu americano premium e coquetéis de assinatura tornam-no um ponto de encontro obrigatório.', address: 'Plaza Jesuitas, Km 8 Monday' }
-    },
-    contact: '+595 61 578 400',
-    mapUrl: 'https://maps.google.com/?q=TGI+Fridays+Jesuitas+Plaza'
-  },
-  {
-    id: 'r4',
-    category: Category.RESTAURANTS,
-    rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 4,
     translations: {
-      es: { name: 'O Gaucho CDE', description: 'La excelencia del rodizio brasileño en Paraguay. Cortes seleccionados de carne premium servidos con un servicio impecable en un entorno elegante y acogedor, ideal para amantes de la buena mesa.', address: 'Avda. Rogelio Benitez, CDE' },
-      en: { name: 'O Gaucho CDE', description: 'The excellence of Brazilian rodizio in Paraguay. Selected premium meat cuts served with impeccable service in an elegant and welcoming setting, ideal for fine dining lovers.', address: 'Rogelio Benitez Ave, CDE' },
-      pt: { name: 'O Gaucho CDE', description: 'A excelência do rodízio brasileiro no Paraguai. Cortes selecionados de carne premium servidos com um serviço impecável em um ambiente elegante e acolhedor, ideal para amantes da boa mesa.', address: 'Avda. Rogelio Benitez, CDE' }
+      es: { name: 'Tierra Colorada', description: 'Cocina paraguaya contemporánea liderada por el chef Rodolfo Angenscheidt. Premiado internacionalmente.', address: 'Av. Santísima Trinidad 784, Asunción' },
+      en: { name: 'Tierra Colorada', description: 'Contemporary Paraguayan cuisine led by Chef Rodolfo Angenscheidt. Internationally awarded.', address: '784 Santísima Trinidad Ave, Asunción' },
+      pt: { name: 'Tierra Colorada', description: 'Cozinha paraguaia contemporânea liderada pelo chef Rodolfo Angenscheidt. Premiado internacionalmente.', address: 'Av. Santíssima Trindade 784, Assunção' }
     },
-    whatsapp: '595983500600',
-    mapUrl: 'https://maps.google.com/?q=O+Gaucho+Ciudad+del+Este'
+    contact: '+595 21 663 335',
+    whatsapp: '595981123456',
+    mapUrl: 'https://maps.google.com/?q=Tierra+Colorada+Restaurante'
   },
-
-  // --- HOTELS (4) ---
   {
-    id: 'h1',
-    category: Category.HOTELS,
-    rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
+    id: 'as-r3',
+    category: Category.RESTAURANTS,
+    rating: 4.7,
+    images: [
+      'https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 3,
     translations: {
-      es: { name: 'Hotel Casino Acaray', description: 'Un refugio de elegancia a orillas del río. Cuenta con un casino de clase mundial, spa rejuvenecedor y jardines exuberantes. Es la elección perfecta para quienes buscan confort y entretenimiento de alto nivel.', address: 'Calle 11 de Septiembre y Rio Paraná' },
-      en: { name: 'Hotel Casino Acaray', description: 'A riverside refuge of elegance. Featuring a world-class casino, rejuvenating spa, and lush gardens. It is the perfect choice for those seeking high-level comfort and entertainment.', address: '11 de Septiembre St and Parana River' },
-      pt: { name: 'Hotel Casino Acaray', description: 'Um refúgio de elegância às margens do rio. Conta com um cassino de classe mundial, spa rejuvenescedor e jardins exuberantes. É a escolha perfeita para quem busca conforto e entretenimento de alto nível.', address: 'Rua 11 de Setembro e Rio Paraná' }
+      es: { name: 'Takuare\'e', description: 'Especialista en carnes y sabores del campo con un toque gourmet sofisticado en el centro del eje corporativo.', address: 'Hotel Dazzler, Aviadores del Chaco, Asunción' },
+      en: { name: 'Takuaree', description: 'Specialist in meats and countryside flavors with a sophisticated gourmet touch in the corporate axis.', address: 'Dazzler Hotel, Aviadores del Chaco, Asunción' },
+      pt: { name: 'Takuare\'e', description: 'Especialista em carnes e sabores do campo com um toque gourmet sofisticado no coração do eixo corporativo.', address: 'Hotel Dazzler, Aviadores del Chaco, Assunção' }
+    },
+    whatsapp: '595981111222',
+    mapUrl: 'https://maps.google.com/?q=Takuaree+Asuncion'
+  },
+  {
+    id: 'as-r4',
+    category: Category.RESTAURANTS,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=1200'],
+    priceLevel: 3,
+    translations: {
+      es: { name: 'Lo de Osvaldo', description: 'El templo del fútbol y la parrilla paraguaya. Ambiente temático único con las mejores carnes del país.', address: 'Cerro Corá 810, Asunción' },
+      en: { name: 'Lo de Osvaldo', description: 'The temple of football and Paraguayan grill. Unique themed atmosphere with the country\'s best meats.', address: '810 Cerro Corá, Asunción' },
+      pt: { name: 'Lo de Osvaldo', description: 'O templo do futebol e da parrilla paraguaia. Ambiente temático único com as melhores carnes do país.', address: 'Cerro Corá 810, Assunção' }
+    },
+    contact: '+595 21 446 122',
+    mapUrl: 'https://maps.google.com/?q=Lo+de+Osvaldo+Asuncion'
+  },
+  {
+    id: 'as-r5',
+    category: Category.RESTAURANTS,
+    rating: 4.9,
+    images: [
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Talleyrand', description: 'Excelencia francesa y continental desde hace décadas. El destino preferido para cenas de gala y eventos diplomáticos.', address: 'Mcal. Estigarribia 932, Asunción' },
+      en: { name: 'Talleyrand', description: 'French and continental excellence for decades. The preferred destination for gala dinners and diplomatic events.', address: '932 Mcal. Estigarribia, Asunción' },
+      pt: { name: 'Talleyrand', description: 'Excelência francesa e continental há décadas. O destino preferido para jantares de gala e eventos diplomáticos.', address: 'Mcal. Estigarribia 932, Assunção' }
+    },
+    contact: '+595 21 441 163',
+    mapUrl: 'https://maps.google.com/?q=Talleyrand+Centro+Asuncion'
+  },
+
+  // --- HOTELS (6) ---
+  {
+    id: 'as-h1',
+    category: Category.HOTELS,
+    rating: 4.9,
+    images: [
+      'https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Factoría Hotel', description: 'Concepto único en Asunción. Lujo industrial y sofisticación boutique.', address: 'Calle Dr. Francisco Morra 813, Asunción' },
+      en: { name: 'Factoria Hotel', description: 'Unique concept in Asunción. Industrial luxury and boutique sophistication.', address: '813 Dr. Francisco Morra St, Asunción' },
+      pt: { name: 'Factoría Hotel', description: 'Conceito único em Assunção. Luxo industrial e sofisticação boutique.', address: 'Rua Dr. Francisco Morra 813, Assunção' }
+    },
+    contact: '+595 21 612 100',
+    whatsapp: '595983555999',
+    email: 'info@factoriahotel.com.py',
+    mapUrl: 'https://maps.google.com/?q=Factoria+Hotel+Asuncion'
+  },
+  {
+    id: 'cde-h1',
+    category: Category.HOTELS,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 3,
+    translations: {
+      es: { name: 'Hotel Casino Acaray', description: 'Elegancia clásica frente al río con casino de nivel internacional.', address: 'Calle 11 de Septiembre, Ciudad del Este' },
+      en: { name: 'Hotel Casino Acaray', description: 'Classic riverside elegance with an international-level casino.', address: '11 de Septiembre St, Ciudad del Este' },
+      pt: { name: 'Hotel Casino Acaray', description: 'Elegância clássica frente ao rio com cassino de nível internacional.', address: 'Rua 11 de Setembro, Ciudad del Este' }
     },
     contact: '+595 61 504 311',
-    email: 'reservas@hotelacaray.com.py',
     mapUrl: 'https://maps.google.com/?q=Hotel+Casino+Acaray'
   },
   {
-    id: 'h2',
+    id: 'as-h2',
     category: Category.HOTELS,
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 4,
     translations: {
-      es: { name: 'Rio Hotel by Bourbon', description: 'Diseño contemporáneo y practicidad sofisticada. Ubicado estratégicamente para el viajero de negocios y shopping, ofrece habitaciones premium con vistas a la ciudad y un servicio que cuida cada detalle.', address: 'Boqueron c/ Adrian Jara' },
-      en: { name: 'Rio Hotel by Bourbon', description: 'Contemporary design and sophisticated practicality. Strategically located for business and shopping travelers, it offers premium rooms with city views and service that attends to every detail.', address: 'Boqueron St / Adrian Jara' },
-      pt: { name: 'Rio Hotel by Bourbon', description: 'Design contemporâneo e praticidade sofisticada. Localizado estrategicamente para o viajante de negócios e shopping, oferece quartos premium com vistas da cidade e um serviço que cuida de cada detalhe.', address: 'Boqueron c/ Adrian Jara' }
+      es: { name: 'La Misión Boutique', description: 'Inspirado en las misiones jesuíticas paraguayas. Un hotel con alma e historia en el corazón de Recoleta.', address: 'Dr. Eulogio Estigarribia 4990, Asunción' },
+      en: { name: 'La Mision Boutique', description: 'Inspired by Paraguayan Jesuit missions. A hotel with soul and history in the heart of Recoleta.', address: '4990 Dr. Eulogio Estigarribia, Asunción' },
+      pt: { name: 'La Misión Boutique', description: 'Inspirado nas missões jesuíticas paraguaias. Um hotel com alma e história no coração da Recoleta.', address: 'Dr. Eulogio Estigarribia 4990, Assunção' }
     },
-    whatsapp: '595983400500',
-    mapUrl: 'https://maps.google.com/?q=Rio+Hotel+by+Bourbon+CDE'
+    contact: '+595 21 621 800',
+    mapUrl: 'https://maps.google.com/?q=La+Mision+Boutique+Hotel+Asuncion'
   },
   {
-    id: 'h3',
-    category: Category.HOTELS,
-    rating: 4.6,
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 3,
-    translations: {
-      es: { name: 'Nobile Hotel & Convention', description: 'Elegancia y versatilidad. Con una de las mejores piscinas panorámicas de la ciudad y amplias salas de convenciones, es un punto de referencia para eventos corporativos y estancias de lujo.', address: 'Km 7, Avda. Gaspar Rodriguez de Francia' },
-      en: { name: 'Nobile Hotel & Convention', description: 'Elegance and versatility. With one of the best panoramic pools in the city and spacious convention rooms, it is a reference point for corporate events and luxury stays.', address: 'Km 7, Gaspar Rodriguez de Francia Ave' },
-      pt: { name: 'Nobile Hotel & Convention', description: 'Elegância e versatilidade. Com uma das melhores piscinas panorâmicas da cidade e amplas salas de convenções, é um ponto de referência para eventos corporativos e estadias de luxo.', address: 'Km 7, Avda. Gaspar Rodriguez de Francia' }
-    },
-    contact: '+595 61 578 500'
-  },
-  {
-    id: 'h4',
+    id: 'as-h3',
     category: Category.HOTELS,
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1560662105-57f8ad6ae2d1?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 3,
     translations: {
-      es: { name: 'Dazzler by Wyndham CDE', description: 'Modernidad en el centro de la zona de mayor crecimiento. Habitaciones amplias y luminosas con un rooftop bar espectacular para disfrutar del atardecer sobre el horizonte paraguayo.', address: 'Av. Monseñor Rodriguez Km 8' },
-      en: { name: 'Dazzler by Wyndham CDE', description: 'Modernity in the heart of the fastest-growing area. Spacious, bright rooms with a spectacular rooftop bar to enjoy the sunset over the Paraguayan horizon.', address: 'Monseñor Rodriguez Ave Km 8' },
-      pt: { name: 'Dazzler by Wyndham CDE', description: 'Modernidade no centro da zona de maior crescimento. Quartos amplos e luminosos com um rooftop bar espetacular para desfrutar do pôr do sol sobre o horizonte paraguaio.', address: 'Av. Monseñor Rodriguez Km 8' }
+      es: { name: 'The Hub Hotel', description: 'Moderno, dinámico y con una de las mejores terrazas con piscina de la capital.', address: 'J. Eulogio Estigarribia, Asunción' },
+      en: { name: 'The Hub Hotel', description: 'Modern, dynamic, and featuring one of the capital\'s best rooftop pool terraces.', address: 'J. Eulogio Estigarribia, Asunción' },
+      pt: { name: 'The Hub Hotel', description: 'Moderno, dinâmico e com um dos melhores terraços com piscina da capital.', address: 'J. Eulogio Estigarribia, Assunção' }
     },
-    email: 'info@dazzlercde.com.py',
-    mapUrl: 'https://maps.google.com/?q=Dazzler+Ciudad+del+Este'
+    whatsapp: '595981500600',
+    mapUrl: 'https://maps.google.com/?q=The+Hub+Hotel+Asuncion'
+  },
+  {
+    id: 'as-h4',
+    category: Category.HOTELS,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Bourbon Asunción', description: 'Elegancia internacional junto a la CONMEBOL. Un resort urbano de primer nivel.', address: 'Av. Sudamericana, Luque' },
+      en: { name: 'Bourbon Asuncion', description: 'International elegance next to CONMEBOL. A top-tier urban resort.', address: 'Sudamericana Ave, Luque' },
+      pt: { name: 'Bourbon Assunção', description: 'Elegância internacional junto à CONMEBOL. Um resort urbano de primeiro nível.', address: 'Av. Sudamericana, Luque' }
+    },
+    contact: '+595 21 659 1000',
+    mapUrl: 'https://maps.google.com/?q=Bourbon+Convention+Hotel+Asuncion'
+  },
+  {
+    id: 'as-h5',
+    category: Category.HOTELS,
+    rating: 4.6,
+    images: [
+      'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1561501900-3701fa6a0f64?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 3,
+    translations: {
+      es: { name: 'Dazzler by Wyndham', description: 'Confort moderno en el nuevo eje comercial. Ideal para negocios y ocio premium.', address: 'Aviadores del Chaco 1392, Asunción' },
+      en: { name: 'Dazzler by Wyndham', description: 'Modern comfort in the new commercial axis. Ideal for premium business and leisure.', address: '1392 Aviadores del Chaco, Asunción' },
+      pt: { name: 'Dazzler by Wyndham', description: 'Conforto moderno no novo eixo comercial. Ideal para negócios e lazer premium.', address: 'Aviadores del Chaco 1392, Assunção' }
+    },
+    contact: '+595 21 600 399',
+    mapUrl: 'https://maps.google.com/?q=Dazzler+Hotel+Asuncion'
   },
 
-  // --- TOURS (4) ---
+  // --- TOURS (6) ---
   {
-    id: 't1',
+    id: 'cde-t1',
     category: Category.TOURS,
     rating: 5.0,
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1629813083648-59c40213702a?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 2,
     translations: {
-      es: { name: 'Itaipú Binacional', description: 'Una obra maestra de la ingeniería mundial. Realice el tour técnico para ver las entrañas de la represa o disfrute de la iluminación monumental nocturna, una experiencia visual sin precedentes.', address: 'Hernandarias, Alto Paraná' },
-      en: { name: 'Itaipu Dam', description: 'A masterpiece of world engineering. Take the technical tour to see the dam\'s interior or enjoy the monumental night lighting, an unprecedented visual experience.', address: 'Hernandarias, Alto Parana' },
-      pt: { name: 'Itaipu Binacional', description: 'Uma obra-prima da engenharia mundial. Realize o tour técnico para ver as entranhas da represa ou desfrute da iluminação monumental noturna, uma experiência visual sem precedentes.', address: 'Hernandarias, Alto Paraná' }
+      es: { name: 'Itaipú Binacional', description: 'Maravilla de la ingeniería mundial con iluminación monumental nocturna.', address: 'Hernandarias, Alto Paraná' },
+      en: { name: 'Itaipu Dam', description: 'World engineering marvel with monumental night lighting.', address: 'Hernandarias, Alto Parana' },
+      pt: { name: 'Itaipu Binacional', description: 'Maravilha da engenharia mundial com iluminação monumental noturna.', address: 'Hernandarias, Alto Paraná' }
     },
     contact: '+595 61 599 8040',
     mapUrl: 'https://maps.google.com/?q=Itaipu+Binacional+Paraguay'
   },
   {
-    id: 't2',
+    id: 'as-t1',
     category: Category.TOURS,
-    rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&q=80&w=800',
+    rating: 4.9,
+    images: [
+      'https://images.unsplash.com/photo-1545153997-73430aa074e6?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 1,
     translations: {
-      es: { name: 'Saltos del Monday', description: 'El secreto mejor guardado de la naturaleza paraguaya. Cataratas imponentes rodeadas de selva virgen. Ideal para una escapada de paz y fotos espectaculares a solo minutos del centro.', address: 'Presidente Franco, Alto Paraná' },
-      en: { name: 'Saltos del Monday', description: 'The best-kept secret of Paraguayan nature. Imposing waterfalls surrounded by virgin jungle. Ideal for a peaceful getaway and spectacular photos just minutes from downtown.', address: 'Presidente Franco, Alto Parana' },
-      pt: { name: 'Saltos del Monday', description: 'O segredo mais bem guardado da natureza paraguaia. Cataratas imponentes cercadas de selva virgem. Ideal para uma escapada de paz e fotos espetaculares a apenas minutos do centro.', address: 'Presidente Franco, Alto Paraná' }
+      es: { name: 'Panteón de los Héroes', description: 'El mausoleo nacional y joya arquitectónica inspirada en Los Inválidos de París.', address: 'Palma y Chile, Asunción' },
+      en: { name: 'Pantheon of Heroes', description: 'The national mausoleum and architectural gem inspired by Les Invalides in Paris.', address: 'Palma & Chile, Asunción' },
+      pt: { name: 'Panteão dos Heróis', description: 'O mausoléu nacional e joia arquitetônica inspirada em Les Invalides de Paris.', address: 'Palma e Chile, Assunção' }
+    },
+    mapUrl: 'https://maps.google.com/?q=Panteon+de+los+Heroes+Asuncion'
+  },
+  {
+    id: 'as-t2',
+    category: Category.TOURS,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&q=80&w=1200'],
+    priceLevel: 1,
+    translations: {
+      es: { name: 'Palacio de López', description: 'Sede del gobierno y símbolo máximo de la architecture neoclásica paraguaya.', address: 'Costanera, Asunción' },
+      en: { name: 'Lopez Palace', description: 'Seat of government and ultimate symbol of Paraguayan neoclassical architecture.', address: 'Costanera, Asunción' },
+      pt: { name: 'Palácio de López', description: 'Sede do governo e símbolo máximo da arquitetura neoclássica paraguaia.', address: 'Costanera, Assunção' }
+    },
+    mapUrl: 'https://maps.google.com/?q=Palacio+de+Lopez+Asuncion'
+  },
+  {
+    id: 'cde-t2',
+    category: Category.TOURS,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 1,
+    translations: {
+      es: { name: 'Saltos del Monday', description: 'Cataratas impresionantes rodeadas de naturaleza virgen.', address: 'Presidente Franco, Alto Paraná' },
+      en: { name: 'Monday Falls', description: 'Impressive waterfalls surrounded by virgin nature.', address: 'Presidente Franco, Alto Parana' },
+      pt: { name: 'Saltos del Monday', description: 'Cataratas impressionantes cercadas por natureza virgem.', address: 'Presidente Franco, Alto Paraná' }
     },
     mapUrl: 'https://maps.google.com/?q=Saltos+del+Monday'
   },
   {
-    id: 't3',
-    category: Category.TOURS,
-    rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 3,
-    translations: {
-      es: { name: 'Shopping China CDE', description: 'Más que compras, una experiencia de lujo. Reconocido internacionalmente como uno de los mejores centros de compras del mundo, ofrece las marcas más exclusivas en un entorno seguro y refinado.', address: '3er Piso, Shopping Paris' },
-      en: { name: 'Shopping China CDE', description: 'More than shopping, a luxury experience. Internationally recognized as one of the world\'s best shopping centers, offering the most exclusive brands in a safe and refined setting.', address: '3rd Floor, Shopping Paris' },
-      pt: { name: 'Shopping China CDE', description: 'Mais que compras, uma experiência de luxo. Reconhecido internacionalmente como um dos melhores centros de compras do mundo, oferece as marcas mais exclusivas em um ambiente seguro e refinado.', address: '3º Piso, Shopping Paris' }
-    },
-    whatsapp: '595983700800',
-    mapUrl: 'https://maps.google.com/?q=Shopping+China+Ciudad+del+Este'
-  },
-  {
-    id: 't4',
+    id: 'as-t3',
     category: Category.TOURS,
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1493246507139-91e8bef99c02?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 1,
     translations: {
-      es: { name: 'Museo Tierra Guaraní', description: 'Un viaje cultural inmersivo. Conozca la rica herencia de los ancestros guaraníes y la biodiversidad local a través de exhibiciones interactivas y piezas históricas únicas.', address: 'Hernandarias, CDE' },
-      en: { name: 'Tierra Guaraní Museum', description: 'An immersive cultural journey. Learn about the rich heritage of Guaraní ancestors and local biodiversity through interactive exhibits and unique historical pieces.', address: 'Hernandarias, CDE' },
-      pt: { name: 'Museu Terra Guarani', description: 'Uma viagem cultural imersiva. Conheça a rica herança dos ancestrais guaranis e a biodiversidade local através de exibições interativas e peças históricas únicas.', address: 'Hernandarias, CDE' }
+      es: { name: 'Costanera de Asunción', description: 'El paseo marítimo ideal para el atardecer con vista a la Bahía de Asunción.', address: 'Avenida Costanera, Asunción' },
+      en: { name: 'Asuncion Riverfront', description: 'The ideal waterfront promenade for sunset views over the Asunción Bay.', address: 'Costanera Ave, Asunción' },
+      pt: { name: 'Costanera de Assunção', description: 'O calçadão ideal para o pôr do sol com vista para a Baía de Assunção.', address: 'Avenida Costanera, Assunção' }
     },
-    email: 'museo@itaipu.gov.py'
-  },
-
-  // --- NIGHTLIFE (4) ---
-  {
-    id: 'n1',
-    category: Category.NIGHTLIFE,
-    rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1566737236580-68a755314545?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 3,
-    translations: {
-      es: { name: 'Inside Club', description: 'El epicentro de la noche en CDE. Con una acústica impecable y line-ups internacionales, Inside redefine la exclusividad nocturna para un público que busca lo mejor en música electrónica y premium drinks.', address: 'Área 1, CDE' },
-      en: { name: 'Inside Club', description: 'The epicenter of CDE night. With impeccable acoustics and international line-ups, Inside redefines nocturnal exclusivity for an audience seeking the best in electronic music and premium drinks.', address: 'Area 1, CDE' },
-      pt: { name: 'Inside Club', description: 'O epicentro da noite em CDE. Com uma acústica impecável e line-ups internacionais, o Inside redefine a exclusividade noturna para um público que busca o melhor em música eletrônica e drinks premium.', address: 'Área 1, CDE' }
-    },
-    contact: '+595 983 100 200'
+    mapUrl: 'https://maps.google.com/?q=Costanera+de+Asuncion'
   },
   {
-    id: 'n2',
-    category: Category.NIGHTLIFE,
+    id: 'as-t4',
+    category: Category.TOURS,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 4,
-    translations: {
-      es: { name: 'Gavanna Resto-Club', description: 'Donde la alta cocina se encuentra con la fiesta. Comience la noche con una cena exquisita y vea cómo el espacio se transforma en el club más chic de la ciudad con un ambiente vibrante.', address: 'Av. Rogelio Benitez, CDE' },
-      en: { name: 'Gavanna Resto-Club', description: 'Where haute cuisine meets the party. Start the night with an exquisite dinner and see how the space transforms into the city\'s chicest club with a vibrant atmosphere.', address: 'Rogelio Benitez Ave, CDE' },
-      pt: { name: 'Gavanna Resto-Club', description: 'Onde a alta cozinha encontra a festa. Comece a noite com um jantar requintado e veja como o espaço se transforma no club mais chique da cidade com um ambiente vibrante.', address: 'Av. Rogelio Benitez, CDE' }
-    },
-    whatsapp: '595981112233'
-  },
-  {
-    id: 'n3',
-    category: Category.NIGHTLIFE,
-    rating: 4.6,
-    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1579362094269-009f44921678?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 2,
     translations: {
-      es: { name: 'Brooklyn Beer House', description: 'El alma urbana de la ciudad. Una amplia selección de cervezas artesanales y un diseño industrial sofisticado que atrae a una multitud moderna y cosmopolita.', address: 'Area 1, Avda. Mcal. Lopez' },
-      en: { name: 'Brooklyn Beer House', description: 'The city\'s urban soul. A wide selection of craft beers and a sophisticated industrial design that attracts a modern and cosmopolitan crowd.', address: 'Area 1, Mcal. Lopez Ave' },
-      pt: { name: 'Brooklyn Beer House', description: 'A alma urbana da cidade. Uma ampla seleção de cervejas artesanais e um design industrial sofisticado que atrai uma multidão moderna e cosmopolita.', address: 'Area 1, Avda. Mcal. Lopez' }
+      es: { name: 'Museo del Barro', description: 'Arte indígena, cerámica popular y arte contemporáneo en un solo espacio.', address: 'Grabadores del Cabichu\'i, Asunción' },
+      en: { name: 'Museo del Barro', description: 'Indigenous art, popular ceramics, and contemporary art in one single space.', address: 'Grabadores del Cabichui, Asunción' },
+      pt: { name: 'Museu do Barro', description: 'Arte indígena, cerâmica popular e arte contemporânea em um só espaço.', address: 'Grabadores del Cabichu\'i, Assunção' }
     },
-    contact: '+595 983 555 444'
-  },
-  {
-    id: 'n4',
-    category: Category.NIGHTLIFE,
-    rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 4,
-    translations: {
-      es: { name: 'Woods CDE', description: 'Sofisticación y ritmo. La famosa marca brasileña llega a CDE para ofrecer las melhores noches de sertanejo y hits actuales en un entorno lujoso y de alta energía.', address: 'Av. Rogelio Benitez' },
-      en: { name: 'Woods CDE', description: 'Sophistication and rhythm. The famous Brazilian brand arrives in CDE to offer the best nights of sertanejo and current hits in a luxurious and high-energy setting.', address: 'Rogelio Benitez Ave' },
-      pt: { name: 'Woods CDE', description: 'Sofisticação e ritmo. A famosa marca brasileira chega a CDE para oferecer as melhores noites de sertanejo e hits atuais em um ambiente luxuoso e de alta energia.', address: 'Av. Rogelio Benitez' }
-    },
-    whatsapp: '595981400300',
-    email: 'woods@cde.com.py'
+    mapUrl: 'https://maps.google.com/?q=Museo+del+Barro+Asuncion'
   },
 
-  // --- EXCHANGE (4) ---
+  // --- NIGHTLIFE (6) ---
   {
-    id: 'e1',
+    id: 'as-n1',
+    category: Category.NIGHTLIFE,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1511108690759-0013d1ca49b2?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Negroni Rooftop', description: 'El punto de encuentro más trendy con la mejor vista de la ciudad.', address: 'Dazzler Hotel, Asunción' },
+      en: { name: 'Negroni Rooftop', description: 'The trendiest meeting point with the city\'s best views.', address: 'Dazzler Hotel, Asunción' },
+      pt: { name: 'Negroni Rooftop', description: 'O ponto de encontro mais trendy com a melhor vista da cidade.', address: 'Dazzler Hotel, Assunção' }
+    },
+    whatsapp: '595981120120',
+    mapUrl: 'https://maps.google.com/?q=Negroni+Asuncion'
+  },
+  {
+    id: 'as-n2',
+    category: Category.NIGHTLIFE,
+    rating: 4.9,
+    images: [
+      'https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Morgan Warehouse', description: 'El club nocturno más exclusivo de Asunción con DJs internacionales.', address: 'Del Maestro 722, Asunción' },
+      en: { name: 'Morgan Warehouse', description: 'Asunción\'s most exclusive nightclub featuring international DJs.', address: '722 Del Maestro, Asunción' },
+      pt: { name: 'Morgan Warehouse', description: 'O clube noturno mais exclusivo de Assunção com DJs internacionais.', address: 'Del Maestro 722, Assunção' }
+    },
+    whatsapp: '595981100500',
+    mapUrl: 'https://maps.google.com/?q=Morgan+Warehouse+Asuncion'
+  },
+  {
+    id: 'as-n3',
+    category: Category.NIGHTLIFE,
+    rating: 4.7,
+    images: [
+      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1511108690759-0013d1ca49b2?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 3,
+    translations: {
+      es: { name: 'Kilkenny Irish Pub', description: 'Un clásico de la noche asuncena con música en vivo y la mejor cerveza.', address: 'Paseo Carmelitas, Asunción' },
+      en: { name: 'Kilkenny Irish Pub', description: 'A classic of Asunción nightlife with live music and the best beer.', address: 'Paseo Carmelitas, Asunción' },
+      pt: { name: 'Kilkenny Irish Pub', description: 'Um clássico da noite assuncena com música ao vivo e a melhor cerveja.', address: 'Paseo Carmelitas, Assunção' }
+    },
+    contact: '+595 21 604 115',
+    mapUrl: 'https://maps.google.com/?q=Kilkenny+Asuncion'
+  },
+  {
+    id: 'as-n4',
+    category: Category.NIGHTLIFE,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1563714193019-2785d1e67b2d?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Broadway Asunción', description: 'Experiencia sofisticada con coctelería premium y ambiente selecto.', address: 'Senador Long, Asunción' },
+      en: { name: 'Broadway Asuncion', description: 'Sophisticated experience with premium cocktails and select atmosphere.', address: 'Senador Long, Asunción' },
+      pt: { name: 'Broadway Assunção', description: 'Experiência sofisticada com coquetelaria premium e ambiente seleto.', address: 'Senador Long, Assunção' }
+    },
+    whatsapp: '595981444555',
+    mapUrl: 'https://maps.google.com/?q=Broadway+Asuncion'
+  },
+  {
+    id: 'as-n5',
+    category: Category.NIGHTLIFE,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1200'],
+    priceLevel: 3,
+    translations: {
+      es: { name: 'Coyote Nightclub', description: 'Energía pura y hits actuales en una de las pistas más grandes.', address: 'Sucre, Asunción' },
+      en: { name: 'Coyote Nightclub', description: 'Pure energy and latest hits on one of the largest dance floors.', address: 'Sucre, Asunción' },
+      pt: { name: 'Coyote Nightclub', description: 'Energia pura e hits atuais em uma das maiores pistas.', address: 'Sucre, Assunção' }
+    },
+    whatsapp: '595981222333',
+    mapUrl: 'https://maps.google.com/?q=Coyote+Asuncion'
+  },
+  {
+    id: 'as-n6',
+    category: Category.NIGHTLIFE,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Velvet', description: 'Lujo nocturno y exclusividad en el eje de la movida Carmelitas.', address: 'O\'Higgins, Asunción' },
+      en: { name: 'Velvet', description: 'Nighttime luxury and exclusivity in the Carmelitas nightlife axis.', address: 'O\'Higgins, Asunción' },
+      pt: { name: 'Velvet', description: 'Luxo noturno e exclusividade no eixo do agito Carmelitas.', address: 'O\'Higgins, Assunção' }
+    },
+    whatsapp: '595981999888',
+    mapUrl: 'https://maps.google.com/?q=Velvet+Asuncion'
+  },
+
+  // --- EXCHANGE (6) ---
+  {
+    id: 'ex1',
     category: Category.EXCHANGE,
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 1,
+    images: [
+      'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1601597111158-2fcee29a4a39?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 2,
     translations: {
-      es: { name: 'Cambios Chaco', description: 'Referente de confianza en el mercado cambiario. Con décadas de trayectoria, garantiza seguridad, rapidez y las tasas más competitivas para clientes que valoran la integridad y eficiencia.', address: 'Microcentro, CDE' },
-      en: { name: 'Cambios Chaco', description: 'A trusted reference in the exchange market. With decades of history, it guarantees security, speed, and the most competitive rates for clients who value integrity and efficiency.', address: 'Downtown, CDE' },
-      pt: { name: 'Cambios Chaco', description: 'Referência de confiança no mercado cambial. Com décadas de trajetória, garante segurança, rapidez e as taxas mais competitivas para clientes que valorizam a integridade e eficiência.', address: 'Microcentro, CDE' }
+      es: { name: 'Maxicambios VIP', description: 'Servicio premium de cambio con cotizaciones preferenciales para clientes Elite.', address: 'Shopping del Sol, Asunción' },
+      en: { name: 'Maxicambios VIP', description: 'Premium exchange service with preferential rates for Elite clients.', address: 'Shopping del Sol, Asunción' },
+      pt: { name: 'Maxicambios VIP', description: 'Serviço premium de câmbio com cotações preferenciais para clientes Elite.', address: 'Shopping del Sol, Assunção' }
     },
-    contact: '+595 61 511 600',
-    mapUrl: 'https://maps.google.com/?q=Cambios+Chaco+CDE'
+    contact: '+595 21 611 111',
+    whatsapp: '595981111999',
+    mapUrl: 'https://maps.google.com/?q=Maxicambios+Shopping+del+Sol'
   },
   {
-    id: 'e2',
+    id: 'ex2',
+    category: Category.EXCHANGE,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1621932953443-7501f2740fbd?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 2,
+    translations: {
+      es: { name: 'Cambios Chaco', description: 'Trayectoria y seguridad. Ubicación estratégica en el eje corporativo.', address: 'Av. Aviadores del Chaco, Asunción' },
+      en: { name: 'Cambios Chaco', description: 'Tradition and security. Strategic location in the corporate axis.', address: 'Aviadores del Chaco Ave, Asunción' },
+      pt: { name: 'Cambios Chaco', description: 'Tradição e segurança. Localização estratégica no eixo corporativo.', address: 'Av. Aviadores del Chaco, Assunção' }
+    },
+    contact: '+595 21 610 110',
+    mapUrl: 'https://maps.google.com/?q=Cambios+Chaco+Aviadores'
+  },
+  {
+    id: 'ex3',
     category: Category.EXCHANGE,
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=800',
+    images: [
+      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1621932953443-7501f2740fbd?auto=format&fit=crop&q=80&w=1200'
+    ],
     priceLevel: 1,
     translations: {
-      es: { name: 'Alberdi Cambios', description: 'Atención personalizada y trato VIP. Especialistas en operaciones de gran volumen con total discreción y seguridad para el viajero y empresario exigente.', address: 'Avda. Adrian Jara' },
-      en: { name: 'Alberdi Cambios', description: 'Personalized attention and VIP treatment. Specialists in large-volume operations with total discretion and security for the demanding traveler and entrepreneur.', address: 'Adrian Jara Ave' },
-      pt: { name: 'Alberdi Cambios', description: 'Atendimento personalizado e trato VIP. Especialistas em operações de grande volume com total discrição e segurança para o viajante e empresário exigente.', address: 'Avda. Adrian Jara' }
+      es: { name: 'Alberdi Cambios', description: 'Rapidez y eficiencia en el microcentro de la capital.', address: 'Alberdi c/ Palma, Asunción' },
+      en: { name: 'Alberdi Exchange', description: 'Speed and efficiency in the capital\'s downtown.', address: 'Alberdi & Palma, Asunción' },
+      pt: { name: 'Alberdi Câmbios', description: 'Rapidez e eficiência no microcentro da capital.', address: 'Alberdi c/ Palma, Assunção' }
     },
-    whatsapp: '595983600700'
+    contact: '+595 21 447 761',
+    mapUrl: 'https://maps.google.com/?q=Alberdi+Cambios+Asuncion'
   },
   {
-    id: 'e3',
+    id: 'ex4',
     category: Category.EXCHANGE,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800',
-    priceLevel: 1,
+    images: [
+      'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1601597111158-2fcee29a4a39?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 2,
     translations: {
-      es: { name: 'Maxicambios', description: 'Tecnología y precisión. Ofrece cotizaciones en tiempo real a través de su plataforma y sucursales estratégicamente ubicadas, brindando transparencia total en cada transacción.', address: 'Shopping del Este' },
-      en: { name: 'Maxicambios', description: 'Technology and precision. Offering real-time quotes through its platform and strategically located branches, providing total transparency in every transaction.', address: 'Shopping del Este' },
-      pt: { name: 'Maxicambios', description: 'Tecnologia e precisão. Oferece cotações em tempo real através de sua plataforma e sucursais estrategicamente localizadas, proporcionando transparência total em cada transação.', address: 'Shopping del Este' }
+      es: { name: 'Eurocambios', description: 'Especialistas en divisas internacionales con atención personalizada.', address: 'Boggiani, Asunción' },
+      en: { name: 'Eurocambios', description: 'Specialists in international currencies with personalized attention.', address: 'Boggiani, Asunción' },
+      pt: { name: 'Eurocambios', description: 'Especialistas em divisas internacionais com atendimento personalizado.', address: 'Boggiani, Assunção' }
     },
-    contact: '+595 61 502 696'
+    whatsapp: '595981777000',
+    mapUrl: 'https://maps.google.com/?q=Eurocambios+Asuncion'
   },
   {
-    id: 'e4',
+    id: 'ex5',
     category: Category.EXCHANGE,
-    rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1621932953912-0b65f442f4ca?auto=format&fit=crop&q=80&w=800',
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=1200'],
     priceLevel: 1,
     translations: {
-      es: { name: 'Bonanza Cambios', description: 'Eficiencia y seguridad garantizada. Conocida por su servicio ágil en el corazón comercial de la ciudad, es la opción favorita de quienes buscan optimizar su tiempo y dinero.', address: 'Avda. Adrian Jara esq. Curupayty' },
-      en: { name: 'Bonanza Cambios', description: 'Efficiency and guaranteed security. Known for its agile service in the city\'s commercial heart, it is the favorite option for those seeking to optimize their time and money.', address: 'Adrian Jara Ave corner Curupayty' },
-      pt: { name: 'Bonanza Cambios', description: 'Eficiência e segurança garantida. Conhecida por seu serviço ágil no coração comercial da cidade, é a opção favorita de quem busca otimizar seu tempo e dinheiro.', address: 'Avda. Adrian Jara esq. Curupayty' }
+      es: { name: 'MyD Cambios', description: 'Seguridad garantizada para operaciones de alto volumen.', address: 'Shopping Mariscal, Asunción' },
+      en: { name: 'MyD Exchange', description: 'Guaranteed security for high-volume operations.', address: 'Mariscal Shopping, Asunción' },
+      pt: { name: 'MyD Câmbios', description: 'Segurança garantida para operações de alto volume.', address: 'Shopping Mariscal, Assunção' }
     },
-    whatsapp: '595983400700',
-    email: 'info@bonanzacambios.com.py'
+    contact: '+595 21 602 000',
+    mapUrl: 'https://maps.google.com/?q=MyD+Cambios+Mariscal'
+  },
+  {
+    id: 'ex6',
+    category: Category.EXCHANGE,
+    rating: 4.6,
+    images: [
+      'https://images.unsplash.com/photo-1518458084722-6a3f133947cc?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1621932953443-7501f2740fbd?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 2,
+    translations: {
+      es: { name: 'Bonanza Cambios', description: 'Atención ágil y confiable con múltiples sucursales.', address: 'General Santos, Asunción' },
+      en: { name: 'Bonanza Exchange', description: 'Agile and reliable service with multiple branches.', address: 'General Santos, Asunción' },
+      pt: { name: 'Bonanza Câmbios', description: 'Atendimento ágil e confiável com múltiplas sucursais.', address: 'General Santos, Assunção' }
+    },
+    whatsapp: '595982111000',
+    mapUrl: 'https://maps.google.com/?q=Bonanza+Cambios+Asuncion'
   }
 ];

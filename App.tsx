@@ -5,7 +5,7 @@ import { INITIAL_PLACES, UI_TRANSLATIONS } from './constants';
 
 // --- Configuration ---
 const PASSWORD_CORRECT = "1234";
-const STORAGE_KEY = 'cde_elite_places';
+const STORAGE_KEY = 'elite_py_places_v5'; // Final migration key
 
 // --- Components ---
 
@@ -16,7 +16,7 @@ const Notification = ({ message, type, onClose }: { message: string, type: 'succ
   }, [onClose]);
 
   return (
-    <div className="fixed top-10 left-1/2 -translate-x-1/2 z-[200] animate-in slide-in-from-top duration-500">
+    <div className="fixed top-10 left-1/2 -translate-x-1/2 z-[300] animate-in slide-in-from-top duration-500">
       <div className={`px-8 py-4 rounded-full shadow-2xl backdrop-blur-xl border ${type === 'success' ? 'bg-zinc-900/90 border-amber-500/50 text-amber-500' : 'bg-red-950/90 border-red-500/50 text-red-200'} text-xs font-bold uppercase tracking-[0.2em]`}>
         {message}
       </div>
@@ -48,21 +48,48 @@ const PlaceCard = memo(({ place, lang, onDetail, isAdmin, onEdit, onDelete }: {
   onEdit: (p: Place) => void,
   onDelete: (id: string) => void
 }) => {
+  const [currentImgIdx, setCurrentImgIdx] = useState(0);
   const t = place.translations[lang];
   const ui = UI_TRANSLATIONS[lang];
+  const images = place.images || [];
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImgIdx((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImgIdx((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   return (
-    <div className="group relative will-change-transform">
+    <div className="group relative">
       <div 
         onClick={() => onDetail(place)}
         className="relative overflow-hidden bg-zinc-900/40 border border-zinc-800/30 rounded-2xl cursor-pointer transition-all duration-700 hover:border-amber-500/40 hover:shadow-[0_0_50px_rgba(245,158,11,0.05)]"
       >
         <div className="aspect-[4/5] overflow-hidden bg-zinc-800 relative">
           <img 
-            src={place.image} 
+            key={currentImgIdx}
+            src={images[currentImgIdx] || 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800'} 
             alt={t.name} 
             loading="lazy"
-            className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110"
+            className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0 transition-all duration-1000 animate-in fade-in"
           />
+          
+          {/* DISCRETE CARD NAVIGATION */}
+          {images.length > 1 && (
+            <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-3 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 pointer-events-none">
+              <button onClick={handlePrev} className="p-2.5 rounded-full bg-black/40 text-white/40 hover:bg-white hover:text-black backdrop-blur-xl transition-all border border-white/5 active:scale-90 pointer-events-auto">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              <button onClick={handleNext} className="p-2.5 rounded-full bg-black/40 text-white/40 hover:bg-white hover:text-black backdrop-blur-xl transition-all border border-white/5 active:scale-90 pointer-events-auto">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+            </div>
+          )}
+
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 transition-opacity"></div>
           
           <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
@@ -123,8 +150,8 @@ const LoginModal = ({ isOpen, onClose, onLogin, lang }: { isOpen: boolean, onClo
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-500">
-      <div className="bg-zinc-900 border border-zinc-800 p-12 rounded-[2.5rem] w-full max-w-sm shadow-[0_0_150px_rgba(245,158,11,0.15)] text-center relative overflow-hidden">
+    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-500" onClick={onClose}>
+      <div className="bg-zinc-900 border border-zinc-800 p-12 rounded-[2.5rem] w-full max-sm:max-w-xs max-w-sm shadow-[0_0_150px_rgba(245,158,11,0.15)] text-center relative overflow-hidden" onClick={e => e.stopPropagation()}>
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
         <div className="w-20 h-20 bg-amber-500/5 rounded-full flex items-center justify-center mx-auto mb-8 border border-amber-500/20 text-amber-500">
           <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 00-2 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
@@ -165,7 +192,7 @@ const PlaceEditorModal = ({ place, lang, onSave, onClose }: {
     category: place.category || Category.RESTAURANTS,
     rating: place.rating || 5.0,
     priceLevel: place.priceLevel || 3,
-    image: place.image || 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800',
+    images: place.images || ['https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800'],
     translations: place.translations || {
       es: { name: '', description: '', address: '' },
       en: { name: '', description: '', address: '' },
@@ -187,15 +214,20 @@ const PlaceEditorModal = ({ place, lang, onSave, onClose }: {
     }));
   };
 
+  const updateImages = (val: string) => {
+    const arr = val.split(',').map(s => s.trim()).filter(s => s.length > 0);
+    setFormData(prev => ({ ...prev, images: arr }));
+  };
+
   return (
-    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md overflow-y-auto">
-      <div className="bg-zinc-900 border border-zinc-800 w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-2xl my-8 animate-in zoom-in duration-500">
+    <div className="fixed inset-0 z-[160] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md overflow-y-auto" onClick={onClose}>
+      <div className="bg-zinc-900 border border-zinc-800 w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-2xl my-8 relative" onClick={e => e.stopPropagation()}>
         <div className="p-10 border-b border-zinc-800 flex justify-between items-center bg-zinc-800/10">
           <div>
             <h2 className="text-xl font-bold text-amber-500 tracking-[0.4em] uppercase mb-1">Editor de Curaduría</h2>
             <p className="text-[9px] text-zinc-500 uppercase tracking-[0.2em]">ELITE PY Administrative Panel</p>
           </div>
-          <button onClick={onClose} className="text-zinc-500 hover:text-white transition-colors bg-black/50 p-3 rounded-full">
+          <button onClick={onClose} className="text-zinc-500 hover:text-white transition-colors bg-black/50 p-3 rounded-full border border-white/5">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
@@ -206,8 +238,8 @@ const PlaceEditorModal = ({ place, lang, onSave, onClose }: {
               <h3 className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.5em] border-b border-zinc-800 pb-4">Multimedia & Clasificación</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-[8px] uppercase tracking-[0.3em] text-zinc-500 mb-2 font-bold">Imagen Principal (URL)</label>
-                  <input type="text" value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} className="w-full bg-black/40 border border-zinc-800 rounded-2xl p-4 text-xs text-white focus:border-amber-500 outline-none transition-all shadow-inner"/>
+                  <label className="block text-[8px] uppercase tracking-[0.3em] text-zinc-500 mb-2 font-bold">Imágenes (URLs separadas por coma)</label>
+                  <textarea rows={3} value={formData.images.join(', ')} onChange={e => updateImages(e.target.value)} className="w-full bg-black/40 border border-zinc-800 rounded-2xl p-4 text-xs text-white focus:border-amber-500 outline-none transition-all shadow-inner resize-none"/>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -273,68 +305,134 @@ const PlaceEditorModal = ({ place, lang, onSave, onClose }: {
 };
 
 const DetailModal = memo(({ place, lang, onClose }: { place: Place | null, lang: Language, onClose: () => void }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [imgIdx, setImgIdx] = useState(0);
+
+  useEffect(() => {
+    if (place) {
+      setImgIdx(0);
+      if (containerRef.current) containerRef.current.scrollTo(0, 0);
+    }
+  }, [place]);
+
   if (!place) return null;
   const t = place.translations[lang];
   const ui = UI_TRANSLATIONS[lang];
+  const images = place.images || [];
+
+  const nextImg = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setImgIdx((prev) => (prev + 1) % images.length);
+  };
+  const prevImg = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setImgIdx((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/98 backdrop-blur-md overflow-y-auto animate-in fade-in duration-700">
-      <div className="bg-zinc-900 border border-zinc-800 w-full max-w-3xl rounded-[3rem] overflow-hidden shadow-[0_0_150px_rgba(0,0,0,1)] animate-in zoom-in slide-in-from-bottom-20 duration-700 my-8">
-        <div className="relative h-80 sm:h-[550px] bg-zinc-800 group/img">
-          <img src={place.image} alt={t.name} className="w-full h-full object-cover transition-transform duration-[3s] group-hover/img:scale-110" />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent"></div>
-          <button onClick={onClose} className="absolute top-8 right-8 bg-black/50 text-white p-4 rounded-full hover:bg-white hover:text-black transition-all backdrop-blur-xl border border-white/10">
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
+    <div 
+      className="fixed inset-0 z-[200] flex items-center justify-center p-0 sm:p-4 bg-black/98 backdrop-blur-md animate-in fade-in duration-700"
+      onClick={onClose}
+    >
+      {/* FIXED CLOSE X */}
+      <button 
+        onClick={(e) => { e.stopPropagation(); onClose(); }} 
+        className="fixed top-6 right-6 z-[250] bg-black/40 text-white p-4 rounded-full hover:bg-white hover:text-black transition-all backdrop-blur-xl border border-white/10 shadow-2xl active:scale-90 flex items-center justify-center group"
+      >
+        <svg className="h-6 w-6 transition-transform group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div 
+        ref={containerRef}
+        className="bg-[#0c0c0c] border-x sm:border border-zinc-800/50 w-full max-w-3xl sm:rounded-[2.5rem] h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto shadow-[0_0_150px_rgba(0,0,0,1)] animate-in zoom-in slide-in-from-bottom-10 duration-500 relative scroll-smooth no-scrollbar"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* IMAGE GALLERY */}
+        <div className="relative h-[45vh] sm:h-[550px] bg-zinc-900 overflow-hidden group/gallery">
+          <img 
+            key={imgIdx}
+            src={images[imgIdx]} 
+            alt={t.name} 
+            className="w-full h-full object-cover animate-in fade-in duration-700" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-black/20"></div>
+
+          {/* DISCRETE NAVIGATION ARROWS */}
+          {images.length > 1 && (
+            <>
+              <button onClick={prevImg} className="absolute left-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/20 hover:bg-black/60 text-white transition-all backdrop-blur-sm opacity-0 group-hover/gallery:opacity-100 border border-white/5 active:scale-90">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              <button onClick={nextImg} className="absolute right-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/20 hover:bg-black/60 text-white transition-all backdrop-blur-sm opacity-0 group-hover/gallery:opacity-100 border border-white/5 active:scale-90">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              {/* IMAGE INDICATORS */}
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+                {images.map((_, i) => (
+                  <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${i === imgIdx ? 'bg-amber-500 w-8' : 'bg-white/20'}`}></div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="px-12 pb-16 -mt-24 relative z-10 text-center sm:text-left">
-          <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-6 mb-10">
-            <div className="max-w-full sm:max-w-[70%]">
-              <p className="text-amber-500 text-[10px] font-bold tracking-[0.6em] uppercase mb-4 opacity-70">{ui.categories[place.category]}</p>
-              <h2 className="text-4xl sm:text-6xl font-bold text-white tracking-tighter leading-none">{t.name}</h2>
-            </div>
-            <div className="text-center sm:text-right">
-              <div className="text-amber-500 text-4xl font-bold mb-2 serif italic tracking-tighter shadow-amber-500/20 drop-shadow-md">★ {place.rating}</div>
-              <div className="text-zinc-500 font-mono text-xs tracking-[0.3em]">{Array(place.priceLevel).fill('$').join('')}</div>
+        <div className="px-8 sm:px-16 pb-20 -mt-16 relative z-10">
+          <div className="flex flex-col items-start gap-4 mb-12">
+            <p className="text-amber-500 text-[10px] font-bold tracking-[0.5em] uppercase opacity-80">{ui.categories[place.category]}</p>
+            <h2 className="text-4xl sm:text-6xl font-bold text-white tracking-tighter leading-tight">{t.name}</h2>
+            <div className="flex items-center gap-6 text-zinc-500">
+              <span className="text-amber-500 text-2xl font-bold serif italic">★ {place.rating}</span>
+              <span className="w-1.5 h-1.5 bg-zinc-800 rounded-full"></span>
+              <span className="font-mono text-xs tracking-[0.3em] uppercase">{Array(place.priceLevel).fill('$').join('')}</span>
             </div>
           </div>
           
-          <div className="text-zinc-300 text-xl mb-12 leading-relaxed font-light serif italic border-l-0 sm:border-l-2 border-amber-500/30 pl-0 sm:pl-8 mx-auto sm:mx-0 max-w-2xl">
+          <div className="text-zinc-400 text-lg leading-relaxed font-light mb-16 border-l-2 border-amber-500/20 pl-8 max-w-2xl italic serif">
             {t.description}
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            <div className="space-y-6">
-                <div className="flex items-start gap-4 p-6 rounded-3xl bg-black/40 border border-zinc-800/50 group/addr">
-                  <div className="w-10 h-10 rounded-full bg-amber-500/5 flex items-center justify-center text-amber-500 shrink-0 border border-amber-500/10 group-hover/addr:bg-amber-500 group-hover/addr:text-black transition-all">
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  </div>
-                  <div>
-                    <p className="text-zinc-200 text-sm font-medium mb-2 leading-snug">{t.address}</p>
-                    {place.mapUrl && (
-                      <a href={place.mapUrl} target="_blank" rel="noopener noreferrer" className="text-amber-500 text-[10px] font-bold uppercase tracking-[0.3em] hover:text-white transition-colors">
-                        {ui.labels.viewMap} →
-                      </a>
-                    )}
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-20">
+            <div className="p-8 rounded-[2rem] bg-zinc-900/30 border border-zinc-800/30">
+              <h4 className="text-[9px] font-bold text-zinc-600 uppercase tracking-[0.3em] mb-5">Ubicación</h4>
+              <p className="text-zinc-200 text-sm mb-6 leading-relaxed font-medium">{t.address}</p>
+              {place.mapUrl && (
+                <a href={place.mapUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-amber-500 text-[10px] font-bold uppercase tracking-[0.3em] hover:text-white transition-all group/map">
+                  {ui.labels.viewMap} <svg className="w-3 h-3 ml-3 transition-transform group-hover/map:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </a>
+              )}
             </div>
 
             <div className="flex flex-col gap-4">
+              <h4 className="text-[9px] font-bold text-zinc-600 uppercase tracking-[0.3em] mb-1">Contacto</h4>
               {place.contact && (
-                <a href={`tel:${place.contact.replace(/\s+/g, '')}`} className="flex items-center justify-center gap-4 bg-zinc-800/50 hover:bg-zinc-700 text-zinc-100 px-8 py-5 rounded-2xl text-[10px] font-bold tracking-[0.4em] uppercase transition-all border border-zinc-700/20 active:scale-95">
-                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                  {ui.labels.call}
+                <a href={`tel:${place.contact.replace(/\s+/g, '')}`} className="flex items-center justify-between bg-zinc-900/40 hover:bg-zinc-800/60 text-zinc-300 px-8 py-5 rounded-2xl text-[10px] font-bold tracking-[0.2em] uppercase transition-all border border-zinc-800/30 group/link">
+                  <span className="flex items-center gap-4"><svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg> {ui.labels.call}</span>
+                  <svg className="w-3 h-3 opacity-0 group-hover/link:opacity-40 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </a>
               )}
               {place.whatsapp && (
-                <a href={`https://wa.me/${place.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-4 bg-zinc-800/50 hover:bg-zinc-700 text-zinc-100 px-8 py-5 rounded-2xl text-[10px] font-bold tracking-[0.4em] uppercase transition-all border border-zinc-700/20 active:scale-95">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  WhatsApp
+                <a href={`https://wa.me/${place.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-zinc-900/40 hover:bg-zinc-800/60 text-zinc-300 px-8 py-5 rounded-2xl text-[10px] font-bold tracking-[0.2em] uppercase transition-all border border-zinc-800/30 group/link">
+                  <span className="flex items-center gap-4"><svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</span>
+                  <svg className="w-3 h-3 opacity-0 group-hover/link:opacity-40 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </a>
               )}
             </div>
+          </div>
+
+          {/* MINIMALIST SIGNATURE BACK BUTTON */}
+          <div className="pt-12 border-t border-zinc-900/60 flex justify-center">
+            <button 
+              onClick={onClose}
+              className="group/back flex items-center gap-6 text-zinc-700 hover:text-amber-500 transition-all duration-700 py-8"
+            >
+              <div className="w-12 h-[0.5px] bg-zinc-800 group-hover/back:bg-amber-500/50 group-hover/back:w-16 transition-all duration-700"></div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.8em] pl-[0.8em]">
+                {lang === 'pt' ? 'Voltar' : lang === 'en' ? 'Back' : 'Volver'}
+              </span>
+              <div className="w-12 h-[0.5px] bg-zinc-800 group-hover/back:bg-amber-500/50 group-hover/back:w-16 transition-all duration-700"></div>
+            </button>
           </div>
         </div>
       </div>
@@ -349,7 +447,15 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState<Category | 'all'>('all');
   const [places, setPlaces] = useState<Place[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : INITIAL_PLACES;
+    if (!saved) return INITIAL_PLACES;
+    try {
+      const parsed = JSON.parse(saved);
+      // Migration check: force update if count doesn't match initial high-quality set
+      if (parsed.length < INITIAL_PLACES.length) return INITIAL_PLACES;
+      return parsed;
+    } catch {
+      return INITIAL_PLACES;
+    }
   });
   const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -362,6 +468,24 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(places));
   }, [places]);
+
+  useEffect(() => {
+    const isModalOpen = !!selectedPlace || !!editingPlace || isLoginModalOpen;
+    document.body.style.overflow = isModalOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [selectedPlace, editingPlace, isLoginModalOpen]);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedPlace(null);
+        setEditingPlace(null);
+        setIsLoginModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
 
   const handleAdminToggle = useCallback(() => {
     if (isAdmin) {
@@ -408,7 +532,7 @@ export default function App() {
           <div className="text-center md:text-left animate-in fade-in slide-in-from-bottom-10 duration-1000">
             {isAdmin && (
                <div className="inline-flex items-center gap-3 px-4 py-2 bg-amber-500/10 text-amber-500 text-[10px] font-bold tracking-[0.5em] uppercase rounded-full mb-8 border border-amber-500/20 backdrop-blur-md">
-                 <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(245,158,11,1)]"></span>
+                 <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
                  Console Administrator
                </div>
             )}
@@ -496,7 +620,7 @@ export default function App() {
               <div className="w-1.5 h-1.5 bg-amber-500/20 rounded-full"></div>
           </div>
           <h2 className="text-5xl font-bold text-white mb-8 italic serif tracking-tighter">Elite Paraguay</h2>
-          <p className="text-zinc-700 text-[10px] tracking-[1em] uppercase leading-loose max-w-sm mx-auto opacity-60">
+          <p className="text-zinc-700 text-[10px] tracking-[1em] uppercase group-hover:tracking-[1.2em] transition-all leading-loose max-w-sm mx-auto opacity-60">
             Exclusive access to the finest destinations in Paraguay.
           </p>
           <div className="mt-20 pt-20 border-t border-zinc-900/50">

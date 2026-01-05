@@ -11,7 +11,7 @@ export interface Place {
   id: string;
   category: Category;
   rating: number;
-  image: string;
+  images: string[]; // Suporta múltiplas imagens
   priceLevel: 1 | 2 | 3 | 4; // 1:$, 2:$$, 3:$$$, 4:$$$$
   translations: {
     es: Translation;
