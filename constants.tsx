@@ -290,7 +290,7 @@ export const INITIAL_PLACES: Place[] = [
     category: Category.HOTELS,
     rating: 4.6,
     images: [
-      'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&q=80&w=1200',
+      'https://plus.unsplash.com/premium_photo-1723867490491-10519f8ed969?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1561501900-3701fa6a0f64?auto=format&fit=crop&q=80&w=1200'
     ],
     priceLevel: 3,
@@ -327,7 +327,7 @@ export const INITIAL_PLACES: Place[] = [
     category: Category.TOURS,
     rating: 4.9,
     images: [
-      'https://images.unsplash.com/photo-1545153997-73430aa074e6?auto=format&fit=crop&q=80&w=1200',
+      'https://plus.unsplash.com/premium_photo-1691960159059-04976913256a?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?auto=format&fit=crop&q=80&w=1200'
     ],
     priceLevel: 1,
@@ -342,7 +342,7 @@ export const INITIAL_PLACES: Place[] = [
     id: 'as-t2',
     category: Category.TOURS,
     rating: 4.8,
-    images: ['https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&q=80&w=1200'],
+    images: ['https://plus.unsplash.com/premium_photo-1691031428843-fffcb81cf454?auto=format&fit=crop&q=80&w=1200'],
     priceLevel: 1,
     translations: {
       es: { name: 'Palacio de López', description: 'Sede del gobierno y símbolo máximo de la architecture neoclásica paraguaya.', address: 'Costanera, Asunción' },
@@ -372,7 +372,7 @@ export const INITIAL_PLACES: Place[] = [
     category: Category.TOURS,
     rating: 4.7,
     images: [
-      'https://images.unsplash.com/photo-1493246507139-91e8bef99c02?auto=format&fit=crop&q=80&w=1200',
+      'https://plus.unsplash.com/premium_photo-1673139285535-80a03340beda?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200'
     ],
     priceLevel: 1,
@@ -406,7 +406,7 @@ export const INITIAL_PLACES: Place[] = [
     category: Category.NIGHTLIFE,
     rating: 4.8,
     images: [
-      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1493246318656-5bfd4cfb29b8?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1511108690759-0013d1ca49b2?auto=format&fit=crop&q=80&w=1200'
     ],
@@ -458,7 +458,7 @@ export const INITIAL_PLACES: Place[] = [
     category: Category.NIGHTLIFE,
     rating: 4.8,
     images: [
-      'https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1607998803461-4e9aef3be418?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1563714193019-2785d1e67b2d?auto=format&fit=crop&q=80&w=1200'
     ],
     priceLevel: 4,
@@ -526,7 +526,7 @@ export const INITIAL_PLACES: Place[] = [
     category: Category.EXCHANGE,
     rating: 4.8,
     images: [
-      'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1621932953443-7501f2740fbd?auto=format&fit=crop&q=80&w=1200'
     ],
     priceLevel: 2,
@@ -576,7 +576,7 @@ export const INITIAL_PLACES: Place[] = [
     id: 'ex5',
     category: Category.EXCHANGE,
     rating: 4.7,
-    images: ['https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=1200'],
+    images: ['https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&q=80&w=1200'],
     priceLevel: 1,
     translations: {
       es: { name: 'MyD Cambios', description: 'Seguridad garantizada para operaciones de alto volumen.', address: 'Shopping Mariscal, Asunción' },
@@ -591,7 +591,7 @@ export const INITIAL_PLACES: Place[] = [
     category: Category.EXCHANGE,
     rating: 4.6,
     images: [
-      'https://images.unsplash.com/photo-1518458084722-6a3f133947cc?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1642060731164-8aa772cea6c0?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1621932953443-7501f2740fbd?auto=format&fit=crop&q=80&w=1200'
     ],
     priceLevel: 2,
