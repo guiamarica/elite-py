@@ -554,7 +554,7 @@ export default function App() {
       {/* Navigation / Filter */}
       <div className="sticky top-0 z-40 bg-black/80 backdrop-blur-2xl border-b border-zinc-900/50 shadow-2xl">
         <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-col lg:flex-row justify-between items-center gap-10">
-          <ul className="flex items-center gap-12 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
+          <ul className="flex flex-wrap items-center justify-center lg:justify-start gap-x-12 gap-y-4 py-2 w-full lg:w-auto">
             <li>
               <button 
                 onClick={() => setActiveCategory('all')}

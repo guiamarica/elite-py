@@ -29,7 +29,8 @@ export enum Category {
   HOTELS = 'hotels',
   TOURS = 'tours',
   NIGHTLIFE = 'nightlife',
-  EXCHANGE = 'exchange'
+  EXCHANGE = 'exchange',
+  MOBILITY = 'mobility'
 }
 
 export interface AppTranslations {

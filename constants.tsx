@@ -10,7 +10,8 @@ export const UI_TRANSLATIONS: Record<'es' | 'en' | 'pt', AppTranslations> = {
       [Category.HOTELS]: 'Hoteles & Spa',
       [Category.TOURS]: 'Cultura & Paseos',
       [Category.NIGHTLIFE]: 'Vida Nocturna',
-      [Category.EXCHANGE]: 'Premium Exchange'
+      [Category.EXCHANGE]: 'Premium Exchange',
+      [Category.MOBILITY]: 'Mobilidad'
     },
     labels: {
       admin: 'Administración',
@@ -38,7 +39,8 @@ export const UI_TRANSLATIONS: Record<'es' | 'en' | 'pt', AppTranslations> = {
       [Category.HOTELS]: 'Hotels & Spa',
       [Category.TOURS]: 'Culture & Tours',
       [Category.NIGHTLIFE]: 'Nightlife',
-      [Category.EXCHANGE]: 'VIP Exchange'
+      [Category.EXCHANGE]: 'VIP Exchange',
+      [Category.MOBILITY]: 'Mobility'
     },
     labels: {
       admin: 'Administration',
@@ -66,7 +68,8 @@ export const UI_TRANSLATIONS: Record<'es' | 'en' | 'pt', AppTranslations> = {
       [Category.HOTELS]: 'Hotéis & Spa',
       [Category.TOURS]: 'Cultura & Passeios',
       [Category.NIGHTLIFE]: 'Vida Noturna',
-      [Category.EXCHANGE]: 'Premium Exchange'
+      [Category.EXCHANGE]: 'Premium Exchange',
+      [Category.MOBILITY]: 'Mobilidade'
     },
     labels: {
       admin: 'Administração',
@@ -121,7 +124,7 @@ export const INITIAL_PLACES: Place[] = [
     translations: {
       es: { name: 'Sax Palace CDE', description: 'Ubicado en el último piso de Sax Department Store, ofrece una experiencia de lujo total con vista al Puente de la Amistad.', address: 'Avenida San Blas, Ciudad del Este' },
       en: { name: 'Sax Palace CDE', description: 'Located on the top floor of Sax Department Store, offering total luxury with views of the Friendship Bridge.', address: 'San Blas Avenue, Ciudad del Este' },
-      pt: { name: 'Sax Palace CDE', description: 'Localizado no último andar da Sax Department Store, oferece uma experiência de luxo total com vista para a Ponte da Amizade.', address: 'Avenida San Blas, Ciudad del Este' }
+      pt: { name: 'Sax Palace CDE', description: 'Localizado no último andar da Sax Department Store, oferece uma experiência de luxo total com vista para a Ponte da Amizade.', address: 'Avenida San Blas, Cidade do Leste' }
     },
     whatsapp: '595983123456',
     mapUrl: 'https://maps.google.com/?q=Sax+Palace+Ciudad+del+Este'
@@ -226,7 +229,7 @@ export const INITIAL_PLACES: Place[] = [
     translations: {
       es: { name: 'Hotel Casino Acaray', description: 'Elegancia clásica frente al río con casino de nivel internacional.', address: 'Calle 11 de Septiembre, Ciudad del Este' },
       en: { name: 'Hotel Casino Acaray', description: 'Classic riverside elegance with an international-level casino.', address: '11 de Septiembre St, Ciudad del Este' },
-      pt: { name: 'Hotel Casino Acaray', description: 'Elegância clássica frente ao rio com cassino de nível internacional.', address: 'Rua 11 de Setembro, Ciudad del Este' }
+      pt: { name: 'Hotel Casino Acaray', description: 'Elegância clássica frente ao rio com cassino de nível internacional.', address: 'Rua 11 de Setembro, Cidade do Leste' }
     },
     contact: '+595 61 504 311',
     mapUrl: 'https://maps.google.com/?q=Hotel+Casino+Acaray'
@@ -599,5 +602,40 @@ export const INITIAL_PLACES: Place[] = [
     },
     whatsapp: '595982111000',
     mapUrl: 'https://maps.google.com/?q=Bonanza+Cambios+Asuncion'
+  },
+
+  // --- MOBILITY (2) ---
+  {
+    id: 'mob1',
+    category: Category.MOBILITY,
+    rating: 4.9,
+    images: [
+      'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 4,
+    translations: {
+      es: { name: 'Asunción Chauffeur Service', description: 'Traslados privados de lujo en vehículos blindados y ejecutivos de alta gama. Seguridad y puntualidad garantizada.', address: 'Servicio en toda el Área Metropolitana, Asunción' },
+      en: { name: 'Asuncion Chauffeur Service', description: 'Private luxury transfers in armored and high-end executive vehicles. Guaranteed security and punctuality.', address: 'Service across Metropolitan Area, Asunción' },
+      pt: { name: 'Asunción Chauffeur Service', description: 'Traslados privados de luxo em veículos blindados e executivos de alto padrão. Segurança e pontualidade garantidas.', address: 'Serviço em toda a Região Metropolitana, Assunção' }
+    },
+    whatsapp: '595981100300',
+    mapUrl: 'https://maps.google.com/?q=Asuncion+Chauffeur+Service'
+  },
+  {
+    id: 'mob2',
+    category: Category.MOBILITY,
+    rating: 4.8,
+    images: [
+      'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1200'
+    ],
+    priceLevel: 3,
+    translations: {
+      es: { name: 'Avis Signature Asunción', description: 'Alquiler de vehículos de lujo y SUVs de última generación. Atención preferencial en el Aeropuerto Silvio Pettirossi.', address: 'Aeropuerto Silvio Pettirossi, Luque' },
+      en: { name: 'Avis Signature Asuncion', description: 'Luxury vehicle and latest generation SUV rentals. Preferential attention at Silvio Pettirossi Airport.', address: 'Silvio Pettirossi Airport, Luque' },
+      pt: { name: 'Avis Signature Assunção', description: 'Aluguel de veículos de luxo e SUVs de última geração. Atendimento preferencial no Aeroporto Silvio Pettirossi.', address: 'Aeroporto Silvio Pettirossi, Luque' }
+    },
+    contact: '+595 21 645 200',
+    mapUrl: 'https://maps.google.com/?q=Avis+Rent+a+Car+Asuncion'
   }
 ];
